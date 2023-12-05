@@ -51,6 +51,7 @@ jobs:
         pushd './${{ env.POM_XML_DIRECTORY }}'
         chmod a+x gradlew
         ./gradlew build azureFunctionsPackage
+        ls build/azure-functions/
         cd build/azure-functions/backuper-azure-func-*
         package_dir=$(pwd)
         echo $package_dir
