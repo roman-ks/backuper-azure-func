@@ -45,8 +45,8 @@ jobs:
       with:
         java-version: ${{ env.JAVA_VERSION }}
 
-    - name: 'Restore Project Dependencies Using Mvn'
-      shell: pwsh # For Linux, use bash
+    - name: 'Build artifact'
+      shell: bash
       run: |
         pushd './${{ env.POM_XML_DIRECTORY }}'
         gradlew build
