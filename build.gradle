@@ -37,7 +37,7 @@ repositories {
 azurefunctions {
     subscription = secretProperties["azure.subscription"]
     resourceGroup = secretProperties["azure.resourceGroup"]
-    appName = secretProperties["azure.appName"]
+    appName = secretProperties["azure.appName"] ?: "default"
     pricingTier = 'Consumption'
     region = 'eastus'
     runtime {
