@@ -20,7 +20,7 @@ name: Deploy Java project to Azure Function App
 
 on:
   push:
-    branches: ["master"]
+    branches: ["master","fix-ci"]
 
 env:
   POM_XML_DIRECTORY: '.'                    # set this to the directory which contains pom.xml file
@@ -49,6 +49,7 @@ jobs:
       shell: bash
       run: |
         pushd './${{ env.POM_XML_DIRECTORY }}'
+        ls -lh
         gradlew build
         popd
 
