@@ -50,7 +50,7 @@ jobs:
       run: |
         pushd './${{ env.POM_XML_DIRECTORY }}'
         chmod a+x gradlew
-        ./gradlew gradle build -x jar fatJar
+        ./gradlew build -x jar fatJar
         popd
 
     - name: 'Run Azure Functions Action'

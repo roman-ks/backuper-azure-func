@@ -2,6 +2,7 @@
 target/
 *.class
 .gradle
+build/
 
 # Log file
 *.log
