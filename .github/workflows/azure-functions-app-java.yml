@@ -51,11 +51,6 @@ jobs:
         pushd './${{ env.POM_XML_DIRECTORY }}'
         chmod a+x gradlew
         ./gradlew build azureFunctionsPackage
-        ls build/azure-functions/
-        cd build/azure-functions/backuper-azure-func-*
-        package_dir=$(pwd)
-        echo $package_dir
-        echo "PACKAGE_PATH=${package_path}" >> $GITHUB_ENV
         popd
 
     - name: 'Run Azure Functions Action'
@@ -63,5 +58,5 @@ jobs:
       id: fa
       with:
         app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
-        package: ${{ env.PACKAGE_PATH }}        # if there are multiple function apps in same project, then this path will be like './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }'
+        package: build/azure-functions/default       # if there are multiple function apps in same project, then this path will be like './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }'
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
