@@ -51,7 +51,7 @@ jobs:
         pushd './${{ env.POM_XML_DIRECTORY }}'
         chmod a+x gradlew
         ls -lh
-        gradlew build
+        ./gradlew build
         popd
 
     - name: 'Run Azure Functions Action'
