@@ -10,7 +10,7 @@ def secretProperties = new Properties()
 try {
     secretProperties.load(new FileInputStream(rootProject.file("secret.properties")))
 } catch (Exception e) {
-    logger.warn("Can't load secret properties", e)
+    logger.warn("Can't load secret properties:{}", e.message)
 }
 
 dependencies {
@@ -37,7 +37,7 @@ repositories {
 azurefunctions {
     subscription = secretProperties["azure.subscription"]
     resourceGroup = secretProperties["azure.resourceGroup"]
-    appName = secretProperties["azure.appName"]
+    appName = secretProperties["azure.appName"] ?: "default"
     pricingTier = 'Consumption'
     region = 'eastus'
     runtime {
@@ -61,9 +61,8 @@ test {
     useJUnitPlatform()
 }
 
-jar {
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
+tasks.register('fatJar', Jar) {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
