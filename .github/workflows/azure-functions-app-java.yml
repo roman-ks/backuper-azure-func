@@ -49,6 +49,7 @@ jobs:
       shell: bash
       run: |
         pushd './${{ env.POM_XML_DIRECTORY }}'
+        chmod a+x gradlew
         ls -lh
         gradlew build
         popd
