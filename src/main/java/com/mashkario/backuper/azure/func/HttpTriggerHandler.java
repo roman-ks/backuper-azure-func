@@ -38,7 +38,7 @@ public class HttpTriggerHandler {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req",
                     methods = {HttpMethod.GET, HttpMethod.POST},
-                    authLevel = AuthorizationLevel.ANONYMOUS)
+                    authLevel = AuthorizationLevel.FUNCTION)
             HttpRequestMessage<Optional<String>> request,
             final ExecutionContext context) {
         context.getLogger().info("Java HTTP trigger processing a request.");
