@@ -9,8 +9,8 @@ import java.util.List;
 
 public class SyncPersistenceService {
 
-    private CosmosContainer cosmosContainer;
-    private SyncMdPersistenceMapper mapper;
+    private final CosmosContainer cosmosContainer;
+    private final SyncMdPersistenceMapper mapper;
 
     @Inject
     public SyncPersistenceService(CosmosContainer cosmosContainer, SyncMdPersistenceMapper mapper) {
