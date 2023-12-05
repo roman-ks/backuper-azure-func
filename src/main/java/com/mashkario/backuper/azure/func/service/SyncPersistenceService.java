@@ -21,7 +21,7 @@ public class SyncPersistenceService {
     public void persist(List<SyncMdDto> dtos) {
         for (SyncMdDto dto : dtos) {
             SyncMdPersistenceDto persistenceDto = mapper.map(dto);
-            cosmosContainer.createItem(persistenceDto,
+            cosmosContainer.upsertItem(persistenceDto,
                     new CosmosItemRequestOptions());
         }
     }
