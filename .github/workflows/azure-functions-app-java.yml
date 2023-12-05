@@ -58,5 +58,5 @@ jobs:
       id: fa
       with:
         app-name: ${{ secrets.AZURE_FUNCTIONAPP_NAME }}
-        package: build/azure-functions # if there are multiple function apps in same project, then this path will be like './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }'
+        package: build/azure-functions/backuper-azure-func-*        # if there are multiple function apps in same project, then this path will be like './${{ env.POM_XML_DIRECTORY }}/target/azure-functions/${{ env.POM_FUNCTIONAPP_NAME }'
         publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }} # Remove publish-profile to use Azure RBAC
