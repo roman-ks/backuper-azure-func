@@ -29,11 +29,6 @@ public class HttpTriggerHandler {
     }
 
 
-    /**
-     * This function listens at endpoint "/api/HttpTriggerJava". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerJava
-     * 2. curl {your host}/api/HttpTriggerJava?name=HTTP%20Query
-     */
     @FunctionName("sync")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req",
